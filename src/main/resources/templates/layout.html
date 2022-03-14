@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>System-Wero</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <!-- Inicio do Menu -->
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
+
+                </div>
+                <!-- capturando o nome do usuario pelo spring security -->
+                <span style="color: var(- -bs-light); color: rgb(255, 255, 255); align-items: center;"><span
+					style="display: flex; justify-content: center;"
+					sec:authentication="principal.nome"></span>
+                <!-- função de logoff do sistema -->
+                <form action="/logout" method="post" style="display: flex; justify-content: center;">
+                    <button type="submit" class="btn btn-default">
+							<span style="color: rgb(255, 255, 255);">Logoff</span>
+						</button>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                </form>
+                <!-- logo do sistema -->
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-laugh-wink"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">
+                        <span>Brand</span>
+                    </div>
+                </a>
+                <!-- Itens do menu -->
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+
+                    <a class="nav-link active" href="home"><i class=""></i><span>Home</span></a>
+
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Usuarios</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/profile">Cadastrar</a><a class="dropdown-item" href="#">Editar</a><a class="dropdown-item" href="#">Deletar</a>
+                        </div>
+                    </li>
+
+
+                </ul>
+                <div style="display: flex; justify-content: center;">
+                    <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+                </div>
+            </div>
+        </nav>
+        <!-- fim do menu -->
+
+
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <!-- Inicio do conteudo central -->
+                <div layout:fragment="content">
+                    <!-- conteudo das páginas -->
+                </div>
+            </div>
+            <!-- fim do conteudo central -->
+
+            <!-- Inicio do rodapé -->
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright">
+                        <span>Copyright ©</span>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- Fim do Rodapé -->
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

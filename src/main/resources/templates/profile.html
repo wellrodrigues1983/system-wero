@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CadastroUsuario</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Bootstrap-Image-Uploader.css">
+    <link rel="stylesheet" href="assets/css/Custom-File-Upload.css">
+    <link rel="stylesheet" href="assets/css/Drag--Drop-Upload-Form.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+<div layout:fragment="content">
+        <div class="page-header">
+            <div></div>
+    <form style="height: 100%;width: 100%;padding: 10px;margin: 15px;">
+        <div class="d-flex" style="width: 100%;height: 100%;margin: 5px;padding: 5px;">
+            <div style="width: 40%;background: var(--bs-body-bg);">
+                <label class="form-label" style="color: var(--bs-indigo);font-weight: bold;">Perfil</label>
+                <input class="form-control" type="text" placeholder="Nome" style="padding: 5px;margin: -1px;margin-bottom: 15px;width: 100%;">
+                <input class="form-control" type="text" placeholder="Email" style="padding: 5px;margin: -1px;margin-bottom: 15px;width: 100%;">
+                <input class="form-control" type="password" style="width: 100%;margin-bottom: 15px;padding: 5px;" placeholder="Senha">
+                <input class="form-control" type="text" placeholder="Telefone" style="padding: 5px;margin: -1px;margin-bottom: 15px;width: 100%;">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 200px;height: 50px;margin-bottom: 15px;">
+                    <input type="radio" id="btnradio1" class="btn-check" name="btnradio" autocomplete="off" checked="" style="width: 25px;height: 25px;">
+                    <label class="form-label btn btn-outline-primary" for="btnradio1">Ativo</label>
+                    <input type="radio" id="btnradio2" class="btn-check" name="btnradio" autocomplete="off" style="width: 25px;height: 25px;">
+                    <label class="form-label btn btn-outline-primary" for="btnradio2">Inativo</label></div>
+                <div class="card mb-3" style="width: 100%;">
+                    <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="assets/img/dogs/image2.jpeg" width="160" height="160">
+                        <div class="mb-3"><button class="btn btn-primary btn-sm" type="button">Change Photo</button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="float-end" style="width: 40%;background: var(--bs-body-bg);margin-left: 30px;">
+                <label class="form-label" style="color: var(--bs-indigo);font-weight: bold;">Endereço</label>
+                <input class="form-control" type="text" placeholder="Cep" style="padding: 5px;margin: -1px;margin-bottom: 15px;width: 100%;">
+                <input class="form-control" type="text" placeholder="Rua" style="padding: 5px;margin: -1px;margin-bottom: 15px;width: 100%;">
+                <input class="form-control" type="text" placeholder="Número" style="padding: 5px;margin: -1px;margin-bottom: 15px;width: 100%;">
+                <input class="form-control" type="text" placeholder="Bairro" style="padding: 5px;margin: -1px;margin-bottom: 15px;width: 100%;">
+                <input class="form-control" type="text" placeholder="Municipio" style="padding: 5px;margin: -1px;margin-bottom: 15px;width: 100%;">
+                <input class="form-control" type="text" placeholder="Estado" style="padding: 5px;margin: -1px;margin-bottom: 15px;width: 100%;">
+                <input class="form-control" type="text" placeholder="Pais" style="padding: 5px;margin: -1px;margin-bottom: 15px;width: 100%;">
+            </div>
+        </div>
+        <div class="d-flex float-start" style="margin: 5px;padding: 5px;">
+            <button class="btn btn-primary" type="button">Salvar</button>
+        </div>
+    </form>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Bootstrap-Image-Uploader.js"></script>
+    <script src="assets/js/Custom-File-Upload.js"></script>
+        </div>        
+    </div>
+    
+</body>
+
+</html>
