@@ -3,14 +3,14 @@
  */
 package br.com.system.wero.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
 
 /**
  * @author Wellington
@@ -19,17 +19,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Permission implements Serializable{
+public class Permission implements GrantedAuthority{
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id	
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "C1_id", unique = true, nullable = false, precision = 10)
+	@Column(unique = true)	
 	private Long id;	
 	
-	@Column(name = "C2_PermissionName", nullable = false, length = 40)
+	
 	private String permissionName;
+	
+	@Override
+	public String getAuthority() {		
+		return this.permissionName;
+	}
 
 	
 	public Permission() {
@@ -57,6 +62,8 @@ public class Permission implements Serializable{
 	public void setPermissionName(String permissionName) {
 		this.permissionName = permissionName;
 	}
+
+	
 	
 	
 	

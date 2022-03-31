@@ -9,13 +9,10 @@ import br.com.system.wero.security.GpUserDetailsService;
 
 @Configuration
 public class UdsSecurityConfig {
-	
+
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder builder, 
-			PasswordEncoder passwordEncoder, 
-			GpUserDetailsService userDetailsService) throws Exception {
-		builder
-			.userDetailsService(userDetailsService)
-			.passwordEncoder(passwordEncoder);
+	public void configureGlobal(AuthenticationManagerBuilder builder, PasswordEncoder passwordEncoder, GpUserDetailsService userDetailsService)
+			throws Exception {
+		builder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
 	}
 }

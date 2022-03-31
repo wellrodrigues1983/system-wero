@@ -26,5 +26,12 @@ public class SecurityConfig {
 		registrationBean.addUrlMappings("/h2/*");
 		return registrationBean;
 	}
+	
+	@Bean
+	ServletRegistrationBean listarservletRegistration() {
+		ServletRegistrationBean registrationBean = new ServletRegistrationBean(new WebServlet());
+		registrationBean.addUrlMappings("/listarTodosUsuarios");
+		return registrationBean;
+	}
 
 }

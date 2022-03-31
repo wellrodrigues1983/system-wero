@@ -23,9 +23,8 @@
 
                 </div>
                 <!-- capturando o nome do usuario pelo spring security -->
-                <span style="color: var(- -bs-light); color: rgb(255, 255, 255); align-items: center;"><span
-					style="display: flex; justify-content: center;"
-					sec:authentication="principal.nome"></span>
+                <span style="color: var(- -bs-light); color: rgb(255, 255, 255); align-items: center;"></span>
+                <span style="display: flex; justify-content: center;" sec:authentication="principal.nome"></span>
                 <!-- função de logoff do sistema -->
                 <form action="/logout" method="post" style="display: flex; justify-content: center;">
                     <button type="submit" class="btn btn-default">
@@ -51,7 +50,9 @@
 
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Usuarios</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/profile">Cadastrar</a><a class="dropdown-item" href="#">Editar</a><a class="dropdown-item" href="#">Deletar</a>
+							<a class="dropdown-item" href="/saveUser">Cadastrar</a>
+                            <a class="dropdown-item" href="#">Editar</a>
+                            <a class="dropdown-item" href="#">Deletar</a>
                         </div>
                     </li>
 
@@ -86,6 +87,8 @@
             <!-- Fim do Rodapé -->
         </div>
     </div>
+    
+	
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/theme.js"></script>
 </body>

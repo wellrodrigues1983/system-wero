@@ -2,12 +2,12 @@ package br.com.system.wero.utils;
 
 public class JdbcUtils {
 	
-	public static final String USUARIO_POR_LOGIN = "SELECT login, senha, ativo, nome FROM usuario"
+	public static final String USUARIO_POR_LOGIN = "SELECT login, senha, ativo, nome FROM user_login"
 			+ " WHERE login = ?";
 	
-	public static final String PERMISSOES_POR_USUARIO = "SELECT u.login, p.nome as nome_permissao FROM usuario_permissao up"
-			+ " JOIN usuario u ON u.id = up.usuario_id"
-			+ " JOIN permissao p ON p.id = up.permissao_id"
+	public static final String PERMISSOES_POR_USUARIO = "SELECT user_id, permission_id as nome_permissao FROM user_permission up"
+			+ " JOIN user_login u ON u.id = up.user_id"
+			+ " JOIN permission p ON p.id = up.permission_id"
 			+ " WHERE u.login = ?";
 	
 	public static final String PERMISSOES_POR_GRUPO = "SELECT g.id, g.nome, p.nome  as nome_permissao FROM grupo_permissao gp"

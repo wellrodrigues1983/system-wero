@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -19,46 +21,41 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class UserPermission implements Serializable{	
-	
+public class UserPermission implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
-	@Id	
+	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "C1_id", unique = true, nullable = false, precision = 10)
-	private Long id;
-	
-	@Column(name = "C2_user", nullable = false, length = 40)
-	private User user;
-	
-	@Column(name = "C3_permission", nullable = false, length = 40)
+	@Column(unique = true, precision = 10)
+	private int id;
+
+	@JoinColumn(name = "user_id", referencedColumnName = "id" )
+	@ManyToOne
+	private UserLogin userLogin;
+
+	@ManyToOne
+	@JoinColumn(name = "permission_id", referencedColumnName = "id")
 	private Permission permission;
 
 	public UserPermission() {
-		
+
 	}
 
-	public UserPermission(Long id, User user, Permission permission) {
-		super();
-		this.id = id;
-		this.user = user;
-		this.permission = permission;
-	}
-
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
+	public UserLogin getUserLogin() {
+		return userLogin;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserLogin(UserLogin userLogin) {
+		this.userLogin = userLogin;
 	}
 
 	public Permission getPermission() {
@@ -68,6 +65,12 @@ public class UserPermission implements Serializable{
 	public void setPermission(Permission permission) {
 		this.permission = permission;
 	}
+
 	
+
+	
+	
+	
+
 	
 }

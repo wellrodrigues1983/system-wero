@@ -1,4 +1,4 @@
-package br.com.system.wero.security;
+  package br.com.system.wero.security;
 
 import static br.com.system.wero.utils.JdbcUtils.*;
 
@@ -22,6 +22,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import br.com.system.wero.entity.UserLogin;
+
 @Component
 public class GpUserDetailsService implements UserDetailsService {
 
@@ -37,16 +39,18 @@ public class GpUserDetailsService implements UserDetailsService {
 		try {
 			connection = dataSource.getConnection();
 
-			GpUserDetails userDetails = buscarUsuario(connection, login);
+			UserLogin userDetails = buscarUsuario(connection, login);
 
 			Collection<GrantedAuthority> permissoesPorUsuario = buscarPermissoes(connection,
 					login, PERMISSOES_POR_USUARIO);
 
-			Collection<GrantedAuthority> permissoesPorGrupo = buscarPermissoes(connection,
-					login, PERMISSOES_POR_GRUPO);
+			/*
+			 * Collection<GrantedAuthority> permissoesPorGrupo =
+			 * buscarPermissoes(connection, login, PERMISSOES_POR_GRUPO);
+			 */
 
 			userDetails.getAuthorities().addAll(permissoesPorUsuario);
-			userDetails.getAuthorities().addAll(permissoesPorGrupo);
+			/* userDetails.getAuthorities().addAll(permissoesPorGrupo); */
 
 			return userDetails;
 		} catch (Exception e) {
@@ -64,7 +68,7 @@ public class GpUserDetailsService implements UserDetailsService {
 		}
 	}
 
-	public GpUserDetails buscarUsuario(Connection connection, String login) throws SQLException {
+	public UserLogin buscarUsuario(Connection connection, String login) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(USUARIO_POR_LOGIN);
 		ps.setString(1, login);
 
@@ -74,6 +78,7 @@ public class GpUserDetailsService implements UserDetailsService {
 			throw new UsernameNotFoundException("Usuário " + login + " não encontrado!");
 		}
 
+		
 		String nome = rs.getString("nome");
 		String password = rs.getString("senha");
 		boolean ativo = rs.getBoolean("ativo");
@@ -81,7 +86,7 @@ public class GpUserDetailsService implements UserDetailsService {
 		rs.close();
 		ps.close();
 
-		return new GpUserDetails(nome, login, password, ativo);
+		return new UserLogin(nome, login, password, ativo);
 	}
 
 	public Collection<GrantedAuthority> buscarPermissoes(Connection connection, String login, String sql) throws SQLException {
@@ -95,6 +100,8 @@ public class GpUserDetailsService implements UserDetailsService {
 		while (rs.next()) {
 			permissoes.add(new SimpleGrantedAuthority(rs.getString("nome_permissao")));
 		}
+		
+		System.out.println(permissoes);
 
 		rs.close();
 		ps.close();
